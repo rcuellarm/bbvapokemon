@@ -29,7 +29,8 @@ function App() {
           <td>Acciones</td>
         </tr>
         {listaPokemon.map((val) => {
-          return <tr><td>{val.name}</td><td><button type="button" onClick={submitPoke(val.url)}>Ver Detalles</button></td></tr>
+          return <tr><td>{val.name}</td><td>{val.url}</td></tr> 
+          //return <tr><td>{val.name}</td><td><button type="button" onClick={submitPoke(val.url)}>Ver Detalles</button></td></tr>
         })}        
       </table>
 
