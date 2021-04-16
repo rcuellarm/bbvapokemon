@@ -7,9 +7,13 @@ function App() {
 
   const[pokemon, setPokemon] = useState([]);
 
-  const submitPoke = (url) => {
+  function submitPoke(url) {
+    //alert(`hello, ${name}`);
     Axios.get(url).then((response) => {
-      setPokemon(response);
+      var pok = response.data;
+      alert(`hello, ${pok.name}-${pok.height}-${pok.weight}`);
+      //console.log(response.data.name);
+      //setPokemon(response);
     })
   }
 
@@ -29,7 +33,7 @@ function App() {
           <td>Acciones</td>
         </tr>
         {listaPokemon.map((val) => {
-          return <tr><td>{val.name}</td><td>{val.url}</td></tr> 
+          return <tr><td>{val.name}</td><td><button onClick={() => submitPoke(val.url)}>Greet</button></td></tr> 
           //return <tr><td>{val.name}</td><td><button type="button" onClick={submitPoke(val.url)}>Ver Detalles</button></td></tr>
         })}        
       </table>
