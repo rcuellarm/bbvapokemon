@@ -8,18 +8,14 @@ function App() {
   const[pokemon, setPokemon] = useState([]);
 
   function submitPoke(url) {
-    //alert(`hello, ${name}`);
     Axios.get(url).then((response) => {
       var pok = response.data;
-      alert(`hello, ${pok.name}-${pok.height}-${pok.weight}`);
-      //console.log(response.data.name);
-      //setPokemon(response);
+      alert(`hello, nombre: ${pok.name} - talla: ${pok.height} - peso: ${pok.weight}`);
     })
   }
 
   useEffect(() => {
     Axios.get("https://pokeapi.co/api/v2/pokemon").then((response) => {
-      //console.log(response.data.results);
       setListaPokemon(response.data.results);
     })
   }, []);
@@ -33,8 +29,7 @@ function App() {
           <td>Acciones</td>
         </tr>
         {listaPokemon.map((val) => {
-          return <tr><td>{val.name}</td><td><button onClick={() => submitPoke(val.url)}>Greet</button></td></tr> 
-          //return <tr><td>{val.name}</td><td><button type="button" onClick={submitPoke(val.url)}>Ver Detalles</button></td></tr>
+          return <tr><td>{val.name}</td><td><button onClick={() => submitPoke(val.url)}>Ver detalles</button></td></tr>
         })}        
       </table>
 
